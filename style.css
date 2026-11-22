@@ -1,0 +1,28 @@
+/* 세겹줄 공개 페이지 공용 스타일 — 외부 글꼴·스크립트 없음 */
+:root { --primary:#8a1c22; --ink:#262626; --sub:#555; --line:#ececec; --soft:#f7f3f2; --bg:#fff; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.75 -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif; -webkit-text-size-adjust:100%; word-break:keep-all; overflow-wrap:break-word; }
+main { max-width:680px; margin:0 auto; padding:40px 20px 80px; }
+.brand { font-size:14px; font-weight:700; color:var(--primary); margin:0 0 8px; letter-spacing:.02em; }
+.brand a { color:inherit; text-decoration:none; }
+h1 { font-size:26px; line-height:1.4; margin:0 0 8px; }
+h2 { font-size:18px; line-height:1.5; margin:36px 0 8px; padding-top:20px; border-top:1px solid var(--line); }
+h3 { font-size:16px; margin:20px 0 4px; }
+p, li { color:var(--sub); }
+ul, ol { padding-left:20px; }
+b, strong { color:var(--ink); }
+a { color:var(--primary); }
+.meta { font-size:14px; color:var(--sub); margin:0 0 16px; }
+.draft { display:inline-block; font-size:13px; font-weight:700; color:var(--primary); background:var(--soft); border-radius:8px; padding:4px 8px; }
+.box { background:var(--soft); border-radius:12px; padding:16px; margin:16px 0; }
+.box p { margin:0; }
+.table { overflow-x:auto; }
+table { width:100%; border-collapse:collapse; font-size:14px; line-height:1.6; }
+th, td { text-align:left; padding:8px 6px; border-bottom:1px solid var(--line); vertical-align:top; }
+th { color:var(--ink); font-weight:600; white-space:nowrap; }
+td { color:var(--sub); }
+.sens { color:var(--primary); font-weight:700; }
+.faq h3 { color:var(--ink); }
+.mail { font-size:18px; font-weight:700; }
+nav.foot { margin-top:48px; padding-top:20px; border-top:1px solid var(--line); font-size:14px; }
+nav.foot a { margin-right:12px; }
