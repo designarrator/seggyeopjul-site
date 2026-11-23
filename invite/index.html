@@ -19,38 +19,41 @@
 <meta name="twitter:image" content="https://designarrator.github.io/seggyeopjul-site/invite/og.png">
 <link rel="stylesheet" href="../style.css">
 <style>
-main.inv { max-width:440px; text-align:center; padding:48px 20px 64px; }
-.inv img { width:100%; height:auto; border-radius:16px; margin:20px 0 8px; }
-.inv h1 { font-size:24px; margin:12px 0 8px; }
-.inv .lead { margin:0 0 24px; }
-.code { background:var(--soft); border-radius:16px; padding:20px 16px; margin:0 0 20px; }
-.code small { display:block; font-size:14px; color:var(--sub); }
-.code strong { display:block; font-size:40px; line-height:1.3; letter-spacing:.08em; color:var(--primary); margin:4px 0 8px; font-variant-numeric:tabular-nums; }
-.btn { display:block; width:100%; border:0; border-radius:14px; padding:16px; font:inherit; font-size:17px; font-weight:700; text-align:center; text-decoration:none; cursor:pointer; margin:0 0 12px; }
+/* 키트: 글자 24/34 · 17/27 · 15/24 세 단계, 간격 4px 배수, 모서리 16(버튼)/20(카드)/999(칩), 주 버튼 56 · 17/600 */
+main.inv { max-width:440px; padding:32px 20px 48px; display:flex; flex-direction:column; gap:32px; }
+.inv .head { display:flex; flex-direction:column; gap:8px; text-align:center; }
+.inv .art { display:block; width:300px; height:auto; margin:0 auto 16px; }
+.inv h1 { margin:0; }
+.inv .lead { margin:0; font-size:17px; line-height:27px; color:var(--sub); }
+.code { background:var(--soft); border-radius:20px; padding:20px; display:flex; flex-direction:column; align-items:center; gap:8px; }
+.code small { font-size:15px; line-height:24px; color:var(--sub); }
+.code strong { font-size:24px; line-height:34px; font-weight:700; letter-spacing:.12em; color:var(--primary); font-variant-numeric:tabular-nums; }
+.btns { display:flex; flex-direction:column; gap:12px; }
+.btn { display:flex; align-items:center; justify-content:center; width:100%; height:56px; border:0; border-radius:16px; font:inherit; font-size:17px; line-height:27px; font-weight:600; text-decoration:none; cursor:pointer; }
 .btn.main { background:var(--primary); color:#fff; }
-.btn.sub { background:#fff; color:var(--ink); border:1px solid var(--line); }
-.btn.copy { width:auto; display:inline-block; padding:8px 16px; font-size:14px; background:#fff; color:var(--primary); border:1px solid var(--primary); border-radius:10px; margin:0; }
-.hint { font-size:14px; color:var(--sub); margin:16px 0 0; }
+.btn.sub { background:var(--soft); color:var(--ink); }
+.btn.copy { width:auto; height:44px; padding:0 20px; font-size:15px; line-height:24px; background:#fff; color:var(--primary); border-radius:999px; }
+.hint { margin:0; font-size:15px; line-height:24px; color:var(--sub); text-align:center; }
 [hidden] { display:none !important; }
 </style>
 </head>
 <body>
 <main class="inv">
-<p class="brand">세겹줄</p>
-<h1>세겹줄에 초대받았어요 💌</h1>
+<div class="head">
+<img class="art" src="art.png" alt="두 사람이 세 겹 실로 한 코를 함께 뜨는 그림" width="300" height="166">
+<h1>세겹줄에 초대받았어요</h1>
 <p class="lead">하루 5분, 같은 말씀으로 서로를 알아가요</p>
-
+</div>
 <div class="code" id="codeBox" hidden>
 <small>초대 코드</small>
 <strong id="code"></strong>
 <button class="btn copy" id="copy" type="button">코드 복사</button>
 </div>
-
+<div class="btns">
 <button class="btn main" id="open" type="button">세겹줄 열기</button>
 <a class="btn sub" href="https://apps.apple.com/kr/app/id6837890225">App Store에서 받기</a>
-<p class="hint" id="hint">앱이 없다면 먼저 받아 주세요. 받은 뒤 이 페이지로 돌아와 «세겹줄 열기»를 누르거나, 앱에서 위 코드를 넣으면 바로 연결돼요.</p>
-
-<img src="og.png" alt="두 사람이 세 겹 실로 한 코를 함께 뜨는 그림" width="1200" height="630">
+</div>
+<p class="hint" id="hint">앱을 받은 뒤 «세겹줄 열기»를 누르거나<br>앱에서 초대 코드를 넣으면 바로 이어져요</p>
 </main>
 <script>
 (function () {
