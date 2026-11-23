@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>세겹줄에 초대받았어요</title>
+<meta name="description" content="하루 5분, 같은 말씀으로 서로를 알아가요">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="세겹줄">
+<meta property="og:title" content="세겹줄에 초대받았어요 💌">
+<meta property="og:description" content="하루 5분, 같은 말씀으로 서로를 알아가요">
+<meta property="og:image" content="https://designarrator.github.io/seggyeopjul-site/invite/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://designarrator.github.io/seggyeopjul-site/invite/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="세겹줄에 초대받았어요 💌">
+<meta name="twitter:description" content="하루 5분, 같은 말씀으로 서로를 알아가요">
+<meta name="twitter:image" content="https://designarrator.github.io/seggyeopjul-site/invite/og.png">
+<link rel="stylesheet" href="../style.css">
+<style>
+main.inv { max-width:440px; text-align:center; padding:48px 20px 64px; }
+.inv img { width:100%; height:auto; border-radius:16px; margin:20px 0 8px; }
+.inv h1 { font-size:24px; margin:12px 0 8px; }
+.inv .lead { margin:0 0 24px; }
+.code { background:var(--soft); border-radius:16px; padding:20px 16px; margin:0 0 20px; }
+.code small { display:block; font-size:14px; color:var(--sub); }
+.code strong { display:block; font-size:40px; line-height:1.3; letter-spacing:.08em; color:var(--primary); margin:4px 0 8px; font-variant-numeric:tabular-nums; }
+.btn { display:block; width:100%; border:0; border-radius:14px; padding:16px; font:inherit; font-size:17px; font-weight:700; text-align:center; text-decoration:none; cursor:pointer; margin:0 0 12px; }
+.btn.main { background:var(--primary); color:#fff; }
+.btn.sub { background:#fff; color:var(--ink); border:1px solid var(--line); }
+.btn.copy { width:auto; display:inline-block; padding:8px 16px; font-size:14px; background:#fff; color:var(--primary); border:1px solid var(--primary); border-radius:10px; margin:0; }
+.hint { font-size:14px; color:var(--sub); margin:16px 0 0; }
+[hidden] { display:none !important; }
+</style>
+</head>
+<body>
+<main class="inv">
+<p class="brand">세겹줄</p>
+<h1>세겹줄에 초대받았어요 💌</h1>
+<p class="lead">하루 5분, 같은 말씀으로 서로를 알아가요</p>
+
+<div class="code" id="codeBox" hidden>
+<small>초대 코드</small>
+<strong id="code"></strong>
+<button class="btn copy" id="copy" type="button">코드 복사</button>
+</div>
+
+<button class="btn main" id="open" type="button">세겹줄 열기</button>
+<a class="btn sub" href="https://apps.apple.com/kr/app/id6837890225">App Store에서 받기</a>
+<p class="hint" id="hint">앱이 없다면 먼저 받아 주세요. 받은 뒤 이 페이지로 돌아와 «세겹줄 열기»를 누르거나, 앱에서 위 코드를 넣으면 바로 연결돼요.</p>
+
+<img src="og.png" alt="두 사람이 세 겹 실로 한 코를 함께 뜨는 그림" width="1200" height="630">
+</main>
+<script>
+(function () {
+  var STORE = "https://apps.apple.com/kr/app/id6837890225";
+  var m = /[?&]c=([^&#]*)/.exec(location.search);
+  var raw = m ? decodeURIComponent(m[1]) : "";
+  var code = raw.replace(/[^A-Za-z0-9]/g, "").toUpperCase().slice(0, 6);
+  var shown = code.length === 6 ? code.slice(0, 3) + "-" + code.slice(3) : code;
+  var box = document.getElementById("codeBox");
+  if (code) { document.getElementById("code").textContent = shown; box.hidden = false; }
+
+  document.getElementById("copy").addEventListener("click", function () {
+    var b = this, done = function () { b.textContent = "복사했어요"; setTimeout(function () { b.textContent = "코드 복사"; }, 1800); };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(shown).then(done, function () { fallback(); });
+    } else { fallback(); }
+    function fallback() {
+      var t = document.createElement("textarea"); t.value = shown; document.body.appendChild(t); t.select();
+      try { document.execCommand("copy"); done(); } catch (e) {} document.body.removeChild(t);
+    }
+  });
+
+  document.getElementById("open").addEventListener("click", function () {
+    var left = false, t;
+    function gone() { left = true; clearTimeout(t); }
+    document.addEventListener("visibilitychange", function () { if (document.hidden) gone(); });
+    window.addEventListener("pagehide", gone);
+    window.addEventListener("blur", gone);
+    t = setTimeout(function () { if (!left) location.href = STORE; }, 1500);
+    location.href = "seggyeopjul://invite" + (code ? "?code=" + encodeURIComponent(code) : "");
+  });
+})();
+</script>
+</body>
+</html>
